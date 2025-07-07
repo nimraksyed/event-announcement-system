@@ -64,7 +64,8 @@ Ensure the following files are organized under your frontend folder (e.g., `even
       "Resource": "arn:aws:s3:::your-bucket-name/*"
     }
   ]
-} ```
+}
+```
 
 ---
 
@@ -73,31 +74,44 @@ Ensure the following files are organized under your frontend folder (e.g., `even
 ### Step 1: Create SNS Topic
 
 1. Go to **Amazon SNS**.
-2. Create a topic named event_announcement_topic.
+2. Create a topic named `event_announcement_topic`.
 3. Copy the Topic ARN.
 
-### Step 2: Create Lambda Functions
-1. Create two Lambda functions: 
-    event-subscription-handler
-        Subscribes email to the SNS topic
-        Use the provided Python code!
-        Set the SNS_TOPIC_ARN as an environment variable.
-    event-creation-handler
-        Publishes new event notifications to the SNS topic.
-        Uses sns.publish
-> Note: Both functions must have a basic Lambda execution role and permissions to interact with SNS like sns: subscribe, sns: publish, etc.
+---
 
+### Step 2: Create Lambda Functions
+
+1. Create two Lambda functions:  
+   - `event-subscription-handler`  
+     - Subscribes email to the SNS topic  
+     - Use the provided Python code  
+     - Set the `SNS_TOPIC_ARN` as an environment variable  
+   - `event-creation-handler`  
+     - Publishes new event notifications to the SNS topic  
+     - Uses `sns.publish`  
+
+> Note: Both functions must have a basic Lambda execution role and permissions to interact with SNS like `sns:subscribe`, `sns:publish`, etc.
+
+---
 
 ### Step 3: API Gateway Integration
+
 1. Create a REST API using API Gateway.
-2. Create two resources:
-    /subscribe (Method: POST → Integration: event-subscription-handler)
-    /create-event (Method: POST → Integration: event-creation-handler)
+2. Create two resources:  
+   - `/subscribe` (Method: POST → Integration: `event-subscription-handler`)  
+   - `/create-event` (Method: POST → Integration: `event-creation-handler`)
 3. Enable CORS on both methods.
 4. Deploy the API (e.g., Stage: Prod).
 5. Copy the Invoke URL.
 
-###Step 4: Connect the backend and frontend together:
-1. In your script.js file, do this: 
-    const API_BASE_URL = 'https://your-api-id.execute-api.us-east-1.amazonaws.com/Prod';
-> replace the placeholder with your real API Gateway base URL.
+---
+
+### Step 4: Connect the Backend and Frontend Together
+
+1. In your `script.js` file, do this:
+
+```js
+const API_BASE_URL = 'https://your-api-id.execute-api.us-east-1.amazonaws.com/Prod';
+```
+
+> Replace the placeholder with your real API Gateway base URL.
