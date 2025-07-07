@@ -4,7 +4,7 @@ This guide walks through how to deploy and configure the Event Announcement Syst
 
 ---
 
-## 🛠️ Prerequisites
+## Prerequisites
 
 - AWS Account with full access to:
   - Lambda
@@ -17,7 +17,7 @@ This guide walks through how to deploy and configure the Event Announcement Syst
 
 ---
 
-## 🚀 Deployment Steps
+## Deployment Steps
 
 ### 1. **Frontend Hosting on S3**
 - Go to **S3 > Create Bucket**
