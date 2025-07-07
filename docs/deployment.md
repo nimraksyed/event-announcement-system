@@ -64,7 +64,7 @@ Ensure the following files are organized under your frontend folder (e.g., `even
       "Resource": "arn:aws:s3:::your-bucket-name/*"
     }
   ]
-}
+} ```
 
 ---
 
